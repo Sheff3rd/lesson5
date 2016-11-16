@@ -3,6 +3,16 @@
 <%= link_to 'Done', filtered_tasks_path(:done) %>
 |
 <%= link_to 'Open', filtered_tasks_path(:open) %>
+<br />
+<%= link_to 'Sign Up', sign_up_path %>
+|
+
+<% if session[:user_id] %>
+  <%= link_to 'Log Out', log_out_path %><br />
+  <%= current_user.email %>
+<% else %>
+  <%= link_to 'Log In', log_in_path %><br />
+<% end %>
 <hr>
 
 <%= render 'form' %>
@@ -11,3 +21,5 @@
 <ol id='tasks' data-type="<%= params[:type] %>">
   <%= render tasks %>
 </ol>
+
+
